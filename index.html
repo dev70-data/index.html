@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World on a Platter</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5dc;
+      color: #2e2e2e;
+    }
+    header {
+      background-color: #4e944f;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background-color: #d9cab3;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0.75rem 0;
+      flex-wrap: wrap;
+    }
+    nav a {
+      text-decoration: none;
+      color: #3e4a3d;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #4e944f;
+    }
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .search-bar input[type="text"] {
+      padding: 0.5rem;
+      width: 300px;
+      border: 2px solid #4e944f;
+      border-radius: 4px 0 0 4px;
+    }
+    .search-bar button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: #6b8e23;
+      color: white;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+    section {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    h2 {
+      color: #3b5323;
+    }
+    .cuisine {
+      background: #e9e5d6;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-left: 6px solid #6b8e23;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .cuisine img {
+      width: 100%;
+      height: auto;
+      margin-top: 1rem;
+      border-radius: 10px;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #d9cab3;
+      color: #3e4a3d;
+      margin-top: 2rem;
+    }
+  </style>
+  <script>
+    function searchCuisines() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cuisines = document.getElementsByClassName('cuisine');
+
+      Array.from(cuisines).forEach(cuisine => {
+        const text = cuisine.innerText.toLowerCase();
+        if (cuisine.id === 'mexicanCuisine') {
+          cuisine.style.display = text.includes(input) ? 'block' : 'none';
+        } else {
+          cuisine.style.display = text.includes(input) || input === '' ? 'block' : 'none';
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const cuisinesLink = document.querySelector('a[href="#cuisines"]');
+      cuisinesLink.addEventListener('click', () => {
+        document.querySelectorAll('.cuisine').forEach(c => c.style.display = 'block');
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1 id="home">🌿 World on a Platter</h1>
+    <p>Exploring how food reflects the soul of a culture</p>
+  </header>
+
+  <nav>
+    <a href="index.html">🏡 Home</a>
+    <a href="#about">📖 About</a>
+    <a href="#cuisines">🍲 Cuisines</a>
+    <a href="#contact">📬 Contact</a>
+  </nav>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search cuisines..." />
+    <button onclick="searchCuisines()">Search</button>
+  </div>
+
+  <section id="about">
+    <h2>About This Site</h2>
+    <p>
+      Food is more than sustenance—it's a reflection of tradition, geography, and values. This site explores global cuisines and the cultures that shape them.
+    </p>
+    <p>
+      Every bite of food tells a story—of climate, of agriculture, of religion, and of community. Understanding cuisine helps us appreciate the deep-rooted customs, hospitality, and culinary arts that define people across the globe.
+    </p>
+  </section>
+
+  <section id="cuisines">
+    <h2>World Cuisines</h2>
+
+    <div class="cuisine">
+      <h3>Indian Cuisine</h3>
+      <p>
+        Known for its vibrant spices and diverse flavors, Indian food varies greatly by region. It reflects centuries of cultural exchange and religious traditions.
+      </p>
+      <p>
+        Dishes like biryani, dosa, butter chicken, and samosas highlight the use of ingredients like turmeric, cumin, and cardamom. Food is often linked to festivals and spiritual practices.
+      </p>
+      <img src="https://restaurantindia.s3.ap-south-1.amazonaws.com/s3fs-public/2023-10/BeFunky-collage%20%2849%29_11zon.jpg" alt="Indian Cuisine">
+    </div>
+
+    <div class="cuisine">
+      <h3>Italian Cuisine</h3>
+      <p>
+        Rooted in simplicity, Italian cuisine emphasizes fresh ingredients like tomatoes, olive oil, and cheese. It is deeply tied to family and regional pride.
+      </p>
+      <p>
+        Pasta, pizza, risotto, and gelato are internationally loved. Meals in Italy are a social event, with courses often shared leisurely over wine and conversation.
+      </p>
+      <img src="https://bunny-wp-pullzone-nfqzsydbnl.b-cdn.net/wp-content/uploads/2024/08/italyan-mutfagi-ozellikleri.jpg" alt="Italian Cuisine">
+    </div>
+
+    <div class="cuisine">
+      <h3>Japanese Cuisine</h3>
+      <p>
+        Centered on harmony and presentation, Japanese dishes like sushi and ramen showcase balance, seasonality, and aesthetics rooted in cultural values.
+      </p>
+      <p>
+        Food preparation in Japan is an art form. Bento boxes, matcha tea ceremonies, and dishes like miso soup and tempura highlight both nutrition and visual appeal.
+      </p>
+      <img src="https://www.tastingtable.com/img/gallery/20-japanese-dishes-you-need-to-try-at-least-once/intro-1664219638.jpg" alt="Japanese Cuisine">
+    </div>
+
+    <div class="cuisine" id="mexicanCuisine" style="display: none;">
+      <h3>Mexican Cuisine</h3>
+      <p>
+        A blend of indigenous and Spanish influences, Mexican cuisine is known for its bold flavors, colorful dishes, and varied regional styles.
+      </p>
+      <p>
+        Staples include corn, beans, chili peppers, and avocados. Tacos, tamales, mole, and guacamole are just a few of the beloved dishes served in both casual and festive settings.
+      </p>
+      <img src="https://mozartcultures.com/en/wp-content/uploads/2021/03/Borracha_overhead.11.jpg" alt="Mexican Cuisine">
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: cuisineculture@example.com</p>
+    <p>Follow us on social media for recipes and cultural insights!</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 World on a Platter.  created by Devika Babu</p>
+  </footer>
+</body>
+</html>
+
